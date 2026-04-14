@@ -216,14 +216,13 @@ h3 { font-size: 1.75rem; }
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: var(--primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transition: transform 0.1s ease-out, opacity 0.3s ease-out;
-  mix-blend-mode: difference;
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .custom-cursor-follower {
@@ -232,15 +231,25 @@ h3 { font-size: 1.75rem; }
   left: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid var(--primary);
+  border: 1.5px solid var(--primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease-out, opacity 0.3s ease-out, width 0.3s ease, height 0.3s ease;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
 }
 
-.cursor-hover .custom-cursor { transform: scale(2); background-color: var(--brand-cyan); }
-.cursor-hover .custom-cursor-follower { width: 60px; height: 60px; background-color: rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.1); border-width: 0.5px; }
+.cursor-hover .custom-cursor { 
+    transform: scale(2.5); 
+    background-color: var(--brand-cyan); 
+    box-shadow: 0 0 20px var(--brand-cyan);
+}
+.cursor-hover .custom-cursor-follower { 
+    width: 60px; 
+    height: 60px; 
+    background-color: rgba(6, 182, 212, 0.05); 
+    border-color: var(--brand-cyan);
+    border-width: 1px;
+}
 
 /* Interactive Magnetic Pull */
 .magnetic { display: inline-block; }

@@ -111,30 +111,11 @@ export default function Navbar() {
                 <span className="hide-tablet" style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.4rem', borderRadius: '0.25rem' }}>K</span>
            </button>
 
-           {/* LANGUAGE SWITCHER */}
-           <div className="desktop-only" style={{ display: 'flex', gap: '0.25rem' }}>
-                {['EN', 'AR', 'FR'].map(l => (
-                    <button 
-                        key={l}
-                        onClick={() => useAdminStore.getState().setLocale(l as any)}
-                        style={{ 
-                            fontSize: '0.65rem', fontWeight: 900, padding: '0.2rem 0.3rem', 
-                            background: 'none', border: 'none', color: 'white', cursor: 'pointer',
-                            opacity: useAdminStore.getState().locale === l ? 1 : 0.2
-                        }}
-                    >
-                        {l}
-                    </button>
-                ))}
-           </div>
-
-           <div className="desktop-only" style={{ width: '1px', height: '16px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
-
-           <div className="desktop-only" style={{ display: 'flex', gap: '0.25rem' }}>
+           <div className="desktop-only" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
               {isAdmin ? (
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                    <a href={process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'} className="nav-link" style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.8rem' }}>Console</a>
-                    <div style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                    <a href={process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'} className="nav-link" style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem', backgroundColor: 'var(--muted)' }}>CONSOLE</a>
+                    <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
                     <button 
                         onClick={() => {
                             logout();
@@ -143,11 +124,11 @@ export default function Navbar() {
                         className="nav-link" 
                         style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.6 }}
                     >
-                        Logout
+                        LOGOUT
                     </button>
                 </div>
               ) : (
-                <Link href="/login" className="nav-link" style={{ fontSize: '0.8rem' }}>Login</Link>
+                <Link href="/login" className="nav-link" style={{ fontSize: '0.85rem' }}>LOGIN</Link>
               )}
            </div>
            

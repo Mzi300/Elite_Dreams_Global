@@ -124,24 +124,22 @@ export default function Sidebar() {
       <div style={{ padding: '1rem', marginTop: 'auto' }}>
         <a 
           href={process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3001'}
-          target="_blank"
-          rel="noopener noreferrer"
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
-            padding: '0.75rem 1rem',
+            padding: '1rem',
             color: 'var(--primary)',
             textDecoration: 'none',
-            fontSize: '0.8rem',
+            fontSize: '0.85rem',
             fontWeight: 800,
             marginBottom: '1.5rem',
             borderRadius: 'var(--radius)',
-            backgroundColor: 'rgba(14, 165, 233, 0.05)',
-            border: '1px solid rgba(14, 165, 233, 0.1)'
+            backgroundColor: 'var(--muted)',
+            border: '1px solid var(--border)'
           }}
         >
-          VIEW PUBLIC WEBSITE <ArrowUpRight size={14} />
+          RETURN HOME <ArrowUpRight size={16} />
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
