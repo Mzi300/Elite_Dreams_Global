@@ -12,9 +12,23 @@ export default function SessionGuard({ children }: { children: React.ReactNode }
 
     useEffect(() => {
         setMounted(true);
+
+        // --- CROSS-DOMAIN AUTH HAND-OFF ---
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const key = params.get('key');
+            if (key) {
+                const success = useAdminStore.getState().login(key);
+                if (success) {
+                    // Clean the URL for security
+                    window.history.replaceState({}, '', window.location.pathname);
+                }
+            }
+        }
+
         // Delay check slightly to allow Zustand hydration from localStorage
         const timer = setTimeout(() => {
-            if (isAdmin) {
+            if (useAdminStore.getState().isAdmin) {
                 setAuthorized(true);
             } else {
                 // If not admin, redirect back to the home site's login

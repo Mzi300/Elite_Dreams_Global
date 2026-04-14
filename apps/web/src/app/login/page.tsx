@@ -16,7 +16,8 @@ export default function LoginPage() {
     e.preventDefault();
     const success = login(password);
     if (success) {
-      window.location.href = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+      const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000';
+      window.location.href = `${adminUrl}?key=${password}`;
     } else {
       setError(true);
       setTimeout(() => setError(false), 2000);
