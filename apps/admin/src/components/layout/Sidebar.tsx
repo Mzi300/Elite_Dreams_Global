@@ -2,6 +2,7 @@
 
 import { useAdminStore } from '@/lib/store';
 import { useRouter, usePathname } from 'next/navigation';
+import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Sidebar() {
@@ -41,9 +42,20 @@ export default function Sidebar() {
       flexDirection: 'column',
       padding: '2rem 1rem'
     }}>
-      <div style={{ fontWeight: 800, fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '3rem', padding: '0 1rem' }}>
+      <Link 
+        href={process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3001'}
+        style={{ 
+            fontWeight: 800, 
+            fontSize: '1.25rem', 
+            color: 'var(--primary)', 
+            marginBottom: '3rem', 
+            padding: '0 1rem',
+            textDecoration: 'none',
+            display: 'block'
+        }}
+      >
         ELITE DREAMS <span style={{ color: 'var(--foreground)' }}>GLOBAL</span>
-      </div>
+      </Link>
 
       <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {menuItems.map(item => (
@@ -110,6 +122,27 @@ export default function Sidebar() {
       </nav>
 
       <div style={{ padding: '1rem', marginTop: 'auto' }}>
+        <a 
+          href={process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3001'}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            padding: '0.75rem 1rem',
+            color: 'var(--primary)',
+            textDecoration: 'none',
+            fontSize: '0.8rem',
+            fontWeight: 800,
+            marginBottom: '1.5rem',
+            borderRadius: 'var(--radius)',
+            backgroundColor: 'rgba(14, 165, 233, 0.05)',
+            border: '1px solid rgba(14, 165, 233, 0.1)'
+          }}
+        >
+          VIEW PUBLIC WEBSITE <ArrowUpRight size={14} />
+        </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
             A
