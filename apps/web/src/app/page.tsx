@@ -120,34 +120,34 @@ export default function Home() {
                 display: 'inline-flex', 
                 alignItems: 'center',
                 gap: '0.75rem',
-                padding: '0.75rem 1.5rem', 
+                padding: '0.6rem 1.25rem', 
                 backgroundColor: 'rgba(255, 255, 255, 0.03)', 
                 color: 'var(--brand-cyan)', 
                 borderRadius: '0.75rem', 
-                fontSize: '0.75rem', 
+                fontSize: '0.7rem', 
                 fontWeight: 900,
-                marginBottom: '3rem',
+                marginBottom: '1.5rem',
                 textTransform: 'uppercase',
-                letterSpacing: '0.4rem',
+                letterSpacing: '0.3rem',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 backdropFilter: 'blur(12px)',
                 boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
               }}>
-                <Zap size={14} fill="currentColor" />
+                <Zap size={12} fill="currentColor" />
                 Established 2011 // Global Standard
               </motion.div>
               
-              <motion.h1 variants={itemVariants} style={{ color: 'white', marginBottom: '2.5rem', fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: 0.9 }}>
+              <motion.h1 variants={itemVariants} style={{ color: 'white', marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 7vw, 5rem)', lineHeight: 0.9 }}>
                 Engineering the <br/><span className="text-gradient">Future</span> of <br/> Global Enterprise.
               </motion.h1>
               
-              <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '4.5rem', maxWidth: '800px', margin: '0 auto 4.5rem', lineHeight: '1.7', fontWeight: 500 }}>
+              <motion.p variants={itemVariants} style={{ fontSize: '1.125rem', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '3rem', maxWidth: '750px', margin: '0 auto 3rem', lineHeight: '1.6', fontWeight: 500 }}>
                 Elite Dreams Global Technologies is the world-class partner for cloud architecture, cybersecurity systems, and infinite software scalability. We define the technical standards of the future.
               </motion.p>
               
-              <motion.div variants={itemVariants} style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center', alignItems: 'center' }}>
+              <motion.div variants={itemVariants} style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'center' }}>
                 <Magnetic>
-                    <a href="#solutions" className="btn btn-primary" style={{ backgroundColor: 'white', color: '#020617', padding: '1.25rem 3.5rem' }}>
+                    <a href="#solutions" className="btn btn-primary" style={{ backgroundColor: 'white', color: '#020617', padding: '1rem 3rem' }}>
                         Start Transformation <ChevronRight size={18} style={{ marginLeft: '0.5rem' }} />
                     </a>
                 </Magnetic>

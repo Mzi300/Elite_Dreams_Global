@@ -84,21 +84,21 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#020617', color: 'white', padding: '10rem 2rem 5rem' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#020617', color: 'white', padding: '6rem 2rem 5rem' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '3rem' }}>
           
           {/* Left: Form */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-            <div style={{ marginBottom: '4rem' }}>
-                <Link href="/" style={{ color: 'rgba(255,255,255,0.3)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', marginBottom: '2rem' }}>
+            <div style={{ marginBottom: '2rem' }}>
+                <Link href="/" style={{ color: 'rgba(255,255,255,0.3)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
                     <ArrowLeft size={16} /> BACK TO BASE
                 </Link>
-                <h1 style={{ fontSize: '3rem', fontWeight: 900, letterSpacing: '-2px', marginBottom: '1rem' }}>ENTERPRISE <span className="text-gradient">ACQUISITION</span></h1>
-                <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: '500px' }}>Secure your tactical infrastructure via our sovereign procurement protocol.</p>
+                <h1 style={{ fontSize: '2.5rem', fontWeight: 900, letterSpacing: '-2px', marginBottom: '0.5rem' }}>ENTERPRISE <span className="text-gradient">ACQUISITION</span></h1>
+                <p style={{ color: 'rgba(255,255,255,0.5)', maxWidth: '500px', fontSize: '0.9rem' }}>Secure your tactical infrastructure via our sovereign procurement protocol.</p>
             </div>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                     <div className="form-group">
                         <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 900, opacity: 0.4, letterSpacing: '2px', marginBottom: '0.75rem' }}>CLIENT NAME</label>

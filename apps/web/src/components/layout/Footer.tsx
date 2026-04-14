@@ -5,7 +5,7 @@ import { Activity, Shield, Cpu, Globe, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#020617', color: '#f8fafc', padding: '10rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
+    <footer style={{ backgroundColor: '#020617', color: '#f8fafc', padding: '6rem 0 4rem', position: 'relative', overflow: 'hidden' }}>
       {/* Background Glow */}
       <div style={{ 
         position: 'absolute', 
@@ -19,7 +19,7 @@ export default function Footer() {
       }}></div>
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '5rem', marginBottom: '8rem' }}>
+        <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', marginBottom: '4rem' }}>
           <div style={{ gridColumn: 'span 2' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.875rem', marginBottom: '2rem' }}>
                <div style={{ 

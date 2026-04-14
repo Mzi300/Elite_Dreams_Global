@@ -85,40 +85,40 @@ export default function Navbar() {
                 fontSize: '1.125rem'
             }}>E</div>
             <span style={{ fontWeight: 900, fontSize: '1.5rem', letterSpacing: '-0.06em' }} className="hide-mobile">
-                ELITE <span className="text-gradient">DREAMS</span>
+                ELITE <span className="text-gradient hide-laptop">DREAMS</span>
             </span>
             </Link>
         </Magnetic>
 
         {/* DESKTOP NAVIGATION */}
-        <div className="nav-group desktop-only" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-          <Link href="/services" className="nav-link">Strategic Solutions</Link>
-          <Link href="/insights" className="nav-link">Technical Insights</Link>
-          <Link href="/products" className="nav-link">Enterprise Hub</Link>
-          <Link href="/docs" className="nav-link">Intelligence</Link>
-          <Link href="/support" className="nav-link">Support Hub</Link>
+        <div className="nav-group desktop-only" style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
+          <Link href="/services" className="nav-link" style={{ fontSize: '0.85rem' }}>Solutions</Link>
+          <Link href="/insights" className="nav-link" style={{ fontSize: '0.85rem' }}>Insights</Link>
+          <Link href="/products" className="nav-link" style={{ fontSize: '0.85rem' }}>Hub</Link>
+          <Link href="/docs" className="nav-link" style={{ fontSize: '0.85rem' }}>Intelligence</Link>
+          <Link href="/support" className="nav-link" style={{ fontSize: '0.85rem' }}>Support</Link>
         </div>
 
         {/* ACTIONS */}
-        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
            {/* SEARCH TRIGGER */}
            <button 
                 onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true }))}
                 className="desktop-only nav-link"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.6 }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem', opacity: 0.6 }}
            >
-                <Search size={18} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.4rem', borderRadius: '0.25rem' }}>CTRL+K</span>
+                <Search size={16} />
+                <span className="hide-tablet" style={{ fontSize: '0.65rem', fontWeight: 900, background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.4rem', borderRadius: '0.25rem' }}>K</span>
            </button>
 
            {/* LANGUAGE SWITCHER */}
-           <div className="desktop-only" style={{ display: 'flex', gap: '0.5rem' }}>
+           <div className="desktop-only" style={{ display: 'flex', gap: '0.25rem' }}>
                 {['EN', 'AR', 'FR'].map(l => (
                     <button 
                         key={l}
                         onClick={() => useAdminStore.getState().setLocale(l as any)}
                         style={{ 
-                            fontSize: '0.65rem', fontWeight: 900, padding: '0.2rem 0.4rem', 
+                            fontSize: '0.65rem', fontWeight: 900, padding: '0.2rem 0.3rem', 
                             background: 'none', border: 'none', color: 'white', cursor: 'pointer',
                             opacity: useAdminStore.getState().locale === l ? 1 : 0.2
                         }}
@@ -128,16 +128,15 @@ export default function Navbar() {
                 ))}
            </div>
 
-           <div className="desktop-only" style={{ width: '1px', height: '24px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+           <div className="desktop-only" style={{ width: '1px', height: '16px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
 
-           <div className="desktop-only" style={{ display: 'flex', gap: '0.5rem' }}>
+           <div className="desktop-only" style={{ display: 'flex', gap: '0.25rem' }}>
               {isAdmin ? (
                 <>
-                    <a href={process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'} className="nav-link" style={{ color: 'var(--primary)', fontWeight: 700 }}>Console</a>
-                    <button onClick={logout} className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>Logout</button>
+                    <a href={process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'} className="nav-link" style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '0.8rem' }}>Console</a>
                 </>
               ) : (
-                <Link href="/login" className="nav-link">Login</Link>
+                <Link href="/login" className="nav-link" style={{ fontSize: '0.8rem' }}>Login</Link>
               )}
            </div>
            
@@ -145,33 +144,33 @@ export default function Navbar() {
             <button 
                 onClick={() => setIsCartOpen(true)}
                 className="nav-link" 
-                style={{ padding: '0.75rem', position: 'relative', background: 'none', border: 'none', cursor: 'pointer' }}
+                style={{ padding: '0.5rem', position: 'relative', background: 'none', border: 'none', cursor: 'pointer' }}
             >
-                <ShoppingCart size={22} strokeWidth={2} />
+                <ShoppingCart size={20} strokeWidth={2} />
                 {cartCount > 0 && (
                 <span style={{ 
                     position: 'absolute', 
                     top: '2px', 
                     right: '2px', 
-                    width: '18px', 
-                    height: '18px', 
+                    width: '16px', 
+                    height: '16px', 
                     backgroundColor: 'var(--primary)', 
                     color: 'white', 
-                    fontSize: '0.7rem', 
+                    fontSize: '0.6rem', 
                     borderRadius: '50%', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center',
                     fontWeight: 900,
-                    border: '2px solid var(--background)'
+                    border: '1px solid var(--background)'
                 }}>{cartCount}</span>
                 )}
             </button>
            </Magnetic>
 
            <Magnetic>
-            <Link href="/contact" className="btn btn-primary desktop-only" style={{ padding: '0.85rem 2rem', borderRadius: '0.85rem', fontSize: '0.9rem' }}>
-                Join the Elite
+            <Link href="/contact" className="btn btn-primary desktop-only" style={{ padding: '0.65rem 1.25rem', borderRadius: '0.6rem', fontSize: '0.8rem' }}>
+                Join Elite
             </Link>
            </Magnetic>
 
@@ -293,6 +292,12 @@ export default function Navbar() {
       <style jsx>{`
         @media (min-width: 901px) {
           .mobile-only { display: none !important; }
+        }
+        @media (max-width: 1200px) {
+          .hide-tablet { display: none !important; }
+        }
+        @media (max-width: 1100px) {
+          .hide-laptop { display: none !important; }
         }
         @media (max-width: 900px) {
           .desktop-only { display: none !important; }
