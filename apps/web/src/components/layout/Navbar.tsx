@@ -135,7 +135,16 @@ export default function Navbar() {
                 <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                     <a href={process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3000'} className="nav-link" style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.8rem' }}>Console</a>
                     <div style={{ width: '1px', height: '12px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
-                    <button onClick={logout} className="nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.6 }}>Logout</button>
+                    <button 
+                        onClick={() => {
+                            logout();
+                            window.location.href = '/';
+                        }} 
+                        className="nav-link" 
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.6 }}
+                    >
+                        Logout
+                    </button>
                 </div>
               ) : (
                 <Link href="/login" className="nav-link" style={{ fontSize: '0.8rem' }}>Login</Link>
