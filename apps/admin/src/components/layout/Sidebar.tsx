@@ -26,6 +26,8 @@ export default function Sidebar() {
     { name: 'Settings', href: '/settings', icon: '⚙️' },
   ];
 
+  const logoutItem = { name: 'Logout', icon: '🚪' };
+
   return (
     <div style={{
       width: '280px',
@@ -72,21 +74,49 @@ export default function Sidebar() {
             {item.name}
           </Link>
         ))}
+        {/* Logout Tab */}
+        <button 
+          onClick={handleLogout}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            padding: '0.75rem 1rem',
+            borderRadius: 'var(--radius)',
+            border: 'none',
+            textDecoration: 'none',
+            color: 'var(--foreground)',
+            fontWeight: 500,
+            transition: 'var(--transition-fast)',
+            backgroundColor: 'transparent',
+            cursor: 'pointer',
+            textAlign: 'left',
+            marginTop: '2rem',
+            borderTop: '1px solid var(--border)',
+            paddingTop: '1.5rem'
+          }}
+          onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(244, 63, 94, 0.05)';
+              e.currentTarget.style.color = '#f43f5e';
+          }}
+          onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = 'var(--foreground)';
+          }}
+        >
+          <span>{logoutItem.icon}</span>
+          {logoutItem.name}
+        </button>
       </nav>
 
-      <div style={{ padding: '1rem', marginTop: 'auto', borderTop: '1px solid var(--border)' }}>
+      <div style={{ padding: '1rem', marginTop: 'auto' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
             A
           </div>
           <div>
             <div style={{ fontWeight: 600, fontSize: '0.875rem' }}>Admin User</div>
-            <button 
-                onClick={handleLogout}
-                style={{ fontSize: '0.75rem', color: '#f43f5e', background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontWeight: 700 }}
-            >
-                Terminate Session
-            </button>
+            <div style={{ fontSize: '0.7rem', opacity: 0.5 }}>Command Level 1</div>
           </div>
         </div>
       </div>
