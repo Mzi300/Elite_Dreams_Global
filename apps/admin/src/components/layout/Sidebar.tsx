@@ -11,7 +11,8 @@ export default function Sidebar() {
   
   const handleLogout = () => {
     logout();
-    window.location.href = process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3001';
+    const webUrl = process.env.NEXT_PUBLIC_WEB_URL || 'http://localhost:3001';
+    window.location.href = webUrl;
   };
   const menuItems = [
     { name: 'Dashboard', href: '/', icon: '📊' },

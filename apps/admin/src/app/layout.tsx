@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/layout/Sidebar";
+import SessionGuard from "@/components/auth/SessionGuard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} style={{ display: 'flex' }}>
-        <Sidebar />
-        <main style={{ 
-          flex: 1, 
-          marginLeft: '280px', 
-          minHeight: '100vh', 
-          backgroundColor: 'var(--background)' 
-        }}>
+        <SessionGuard>
+          <Sidebar />
+          <main style={{ 
+            flex: 1, 
+            marginLeft: '280px', 
+            minHeight: '100vh', 
+            backgroundColor: 'var(--background)' 
+          }}>
           <header style={{ 
             height: '70px', 
             borderBottom: '1px solid var(--border)', 
@@ -47,6 +49,7 @@ export default function RootLayout({
             {children}
           </div>
         </main>
+        </SessionGuard>
       </body>
     </html>
   );
