@@ -43,7 +43,9 @@ export default function NotFound() {
 
             <div style={{ marginTop: '4rem', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '2.5rem' }}>
                 <div style={{ fontSize: '0.65rem', fontWeight: 900, opacity: 0.3, letterSpacing: '2px' }}>ERROR LOG: PROTOCOL_SECTOR_NOT_FOUND</div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 900, opacity: 0.3, letterSpacing: '2px', marginTop: '0.5rem' }}>TIMESTAMP: {new Date().toISOString()}</div>
+                <div style={{ fontSize: '0.65rem', fontWeight: 900, opacity: 0.3, letterSpacing: '2px', marginTop: '0.5rem' }}>
+                    TIMESTAMP: {new Date('2026-04-14T10:00:00Z').toISOString()} [STABLE_ORIGIN]
+                </div>
             </div>
         </motion.div>
     </div>
