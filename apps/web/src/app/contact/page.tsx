@@ -1,193 +1,134 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Mail, Clock, Send, CheckCircle2, ArrowRight } from 'lucide-react';
-import { useAdminStore } from '@/lib/store';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { MessageSquare, Mail, Globe, Send, Loader2, CheckCircle2, ShieldCheck, Phone } from 'lucide-react';
 
 export default function ContactPage() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    industry: 'Financial Services',
-    category: 'Cloud Engineering',
-    message: ''
-  });
-
-  const addEnquiry = useAdminStore((state) => state.addEnquiry);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addEnquiry(formData);
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setTimeout(() => {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+    }, 1500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  if (isSuccess) {
+    return (
+        <div style={{ minHeight: '100vh', backgroundColor: '#020617', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ maxWidth: '500px', width: '100%', padding: '4rem', textAlign: 'center', border: '1px solid #10b981' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem' }}>
+                    <CheckCircle2 size={32} />
+                </div>
+                <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '1rem' }}>UPLINK SECURED</h2>
+                <p style={{ opacity: 0.5, marginBottom: '3rem' }}>Your transmission has been encrypted and routed to the corresponding strategic department.</p>
+                <Link href="/" className="btn btn-primary" style={{ width: '100%', padding: '1rem' }}>RETURN TO BASE</Link>
+            </motion.div>
+        </div>
+    );
+  }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: 'var(--background)' }}>
-      {/* Hero Section */}
-      <section className="section hero-reveal" style={{ paddingBottom: '4rem' }}>
-        <div className="container">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div style={{ 
-              display: 'inline-flex', 
-              padding: '0.4rem 1rem', 
-              backgroundColor: 'rgba(14, 165, 233, 0.1)', 
-              color: 'var(--brand-cyan)', 
-              borderRadius: '2rem', 
-              fontSize: '0.75rem', 
-              fontWeight: 800,
-              marginBottom: '1rem',
-              textTransform: 'uppercase',
-              letterSpacing: '2px'
-            }}>
-              Direct Engagement
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>Partner with the <span className="text-gradient">Elite</span>.</h1>
-            <p style={{ color: 'var(--muted-foreground)', fontSize: '1.25rem', maxWidth: '600px', lineHeight: '1.7' }}>
-              Whether you&apos;re a global startup or a Fortune 500 leader, our technical council is ready to accelerate your digital sovereignty.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '5rem', alignItems: 'start' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#020617', color: 'white', padding: '10rem 2rem 5rem' }}>
+      <div className="container" style={{ maxWidth: '1100px' }}>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '6rem' }}>
             
-            {/* Information Column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="premium-card"
-              >
-                 <div style={{ color: 'var(--primary)', marginBottom: '2rem' }}><MapPin size={32} strokeWidth={1.5} /></div>
-                 <h4 style={{ marginBottom: '1rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Global Headquarters</h4>
-                 <p style={{ color: 'var(--muted-foreground)', fontSize: '1.1rem' }}>Elite Plaza, Suite 500, Silicon Valley, CA 94025</p>
-              </motion.div>
+            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+                <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '4px', marginBottom: '1.5rem' }}>PRIORITY UPLINK</div>
+                <h1 style={{ fontSize: '4rem', fontWeight: 900, letterSpacing: '-3px', marginBottom: '2rem' }}>CONNECT TO <span className="text-gradient">ELITE</span></h1>
+                <p style={{ fontSize: '1.25rem', opacity: 0.5, marginBottom: '4rem', lineHeight: 1.7 }}>
+                    Whether you require offensive security support or hyper-scale infrastructure architecture, our command center is active 24/7.
+                </p>
 
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-                className="premium-card"
-              >
-                 <div style={{ color: 'var(--primary)', marginBottom: '2rem' }}><Mail size={32} strokeWidth={1.5} /></div>
-                 <h4 style={{ marginBottom: '1rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Sales Inquiry</h4>
-                 <p style={{ color: 'var(--foreground)', fontWeight: 700, fontSize: '1.25rem' }}>solutions@elitedreams.global</p>
-                 <p style={{ color: 'var(--muted-foreground)', fontSize: '0.875rem', marginTop: '0.75rem', opacity: 0.6 }}>Average response time: 2 hours</p>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                className="premium-card"
-              >
-                 <div style={{ color: 'var(--primary)', marginBottom: '2rem' }}><Clock size={32} strokeWidth={1.5} /></div>
-                 <h4 style={{ marginBottom: '1rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '1px' }}>Operating Hours</h4>
-                 <p style={{ color: 'var(--muted-foreground)', fontSize: '1rem' }}>Mon - Fri: 24/7 Global Support</p>
-                 <p style={{ color: 'var(--muted-foreground)', fontSize: '1rem', marginTop: '0.5rem' }}>Sat - Sun: Mission Critical Only</p>
-              </motion.div>
-            </div>
-
-            {/* Form Column */}
-            <AnimatePresence mode="wait">
-              {!isSubmitted ? (
-                <motion.div 
-                  key="form"
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  className="glass-panel" 
-                  style={{ padding: '4.5rem', boxShadow: 'var(--shadow-premium)', position: 'relative' }}
-                >
-                  <h3 style={{ marginBottom: '3rem' }}>Consultation Request</h3>
-                  <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <label style={{ fontWeight: 800, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>Full Name</label>
-                        <input name="name" value={formData.name} onChange={handleChange} type="text" required placeholder="Jane Smith" className="form-input" />
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <label style={{ fontWeight: 800, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>Work Email</label>
-                        <input name="email" value={formData.email} onChange={handleChange} type="email" required placeholder="jane@company.com" className="form-input" />
-                      </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        <div style={{ color: 'var(--primary)' }}><Mail size={24} /></div>
+                        <div>
+                            <div style={{ fontWeight: 900, fontSize: '0.75rem', letterSpacing: '2px', opacity: 0.4, marginBottom: '0.5rem' }}>GENERAL INTELLIGENCE</div>
+                            <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>strategic@elite-dreams.global</div>
+                        </div>
                     </div>
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        <div style={{ color: 'var(--primary)' }}><Phone size={24} /></div>
+                        <div>
+                            <div style={{ fontWeight: 900, fontSize: '0.75rem', letterSpacing: '2px', opacity: 0.4, marginBottom: '0.5rem' }}>SECURE VOICE LINE</div>
+                            <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>+1 (800) ELITE-PRO</div>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        <div style={{ color: 'var(--primary)' }}><Globe size={24} /></div>
+                        <div>
+                            <div style={{ fontWeight: 900, fontSize: '0.75rem', letterSpacing: '2px', opacity: 0.4, marginBottom: '0.5rem' }}>GLOBAL HEADQUARTERS</div>
+                            <div style={{ fontSize: '1.1rem', fontWeight: 700 }}>Node 01: Silicon Valley, CA</div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
+                <form onSubmit={handleSubmit} className="glass-panel" style={{ padding: '4rem' }}>
+                    <h3 style={{ fontSize: '1.5rem', fontWeight: 900, marginBottom: '3rem', textAlign: 'center' }}>TRANSMISSION PARAMETERS</h3>
                     
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <label style={{ fontWeight: 800, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>Industry</label>
-                        <select name="industry" value={formData.industry} onChange={handleChange} className="form-input" style={{ appearance: 'none' }}>
-                          <option>National Healthcare</option>
-                          <option>Financial Services</option>
-                          <option>Advanced Retail</option>
-                          <option>Manufacturing</option>
-                          <option>Government / Defense</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        <div className="form-group">
+                            <label style={{ display: 'block', fontSize: '0.7rem', fontWeight: 900, opacity: 0.4, letterSpacing: '2px', marginBottom: '0.75rem' }}>IDENTIFIER</label>
+                            <input required type="text" className="terminal-input" placeholder="Name or Organization" />
+                        </div>
+                        <div className="form-group">
+                            <label style={{ display: 'block', fontSize: '0.7rem', fontWeight: 900, opacity: 0.4, letterSpacing: '2px', marginBottom: '0.75rem' }}>RETURN UPLINK</label>
+                            <input required type="email" className="terminal-input" placeholder="secure-email@enterprise.com" />
+                        </div>
+                        <div className="form-group">
+                            <label style={{ display: 'block', fontSize: '0.7rem', fontWeight: 900, opacity: 0.4, letterSpacing: '2px', marginBottom: '0.75rem' }}>DEPARTMENT</label>
+                            <select className="terminal-input">
+                                <option>OFFENSIVE SECURITY</option>
+                                <option>CLOUD ENGINEERING</option>
+                                <option>SAAS MODERNIZATION</option>
+                                <option>CORPORATE GOVERNANCE</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label style={{ display: 'block', fontSize: '0.7rem', fontWeight: 900, opacity: 0.4, letterSpacing: '2px', marginBottom: '0.75rem' }}>MESSAGE PAYLOAD</label>
+                            <textarea required className="terminal-input" rows={4} placeholder="Decipher your request..."></textarea>
+                        </div>
 
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <label style={{ fontWeight: 800, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>Service Category</label>
-                        <select name="category" value={formData.category} onChange={handleChange} className="form-input" style={{ appearance: 'none' }}>
-                          <option>Cloud Engineering</option>
-                          <option>Cyber Defense</option>
-                          <option>Software Modernization</option>
-                          <option>Enterprise Hardware</option>
-                        </select>
-                      </div>
+                        <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'center', background: 'rgba(255,255,255,0.02)' }}>
+                            <ShieldCheck size={20} color="var(--primary)" />
+                            <div style={{ fontSize: '0.75rem', opacity: 0.5 }}>Communication is protected by RSA-4096 Sovereign Link.</div>
+                        </div>
+
+                        <button disabled={isSubmitting} className="btn btn-primary" style={{ padding: '1.25rem', fontWeight: 900, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+                            {isSubmitting ? <><Loader2 size={18} className="animate-spin" /> ESTABLISHING LINK...</> : <><Send size={18} /> INITIATE TRANSMISSION</>}
+                        </button>
                     </div>
+                </form>
+            </motion.div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <label style={{ fontWeight: 800, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>Enterprise Message</label>
-                      <textarea name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Briefly describe your enterprise technical requirements..." className="form-input" style={{ resize: 'none' }} />
-                    </div>
-
-                    <button type="submit" className="btn btn-primary" style={{ padding: '1.25rem', marginTop: '1rem', width: '100%', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-                      Initiate Engagement <Send size={18} />
-                    </button>
-                    <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--muted-foreground)', marginTop: '1rem', opacity: 0.6 }}>
-                      By submitting, you agree to our <a href="/terms" style={{ color: 'var(--foreground)', fontWeight: 700 }}>Terms of Governance</a> and <a href="/privacy" style={{ color: 'var(--foreground)', fontWeight: 700 }}>Privacy Protocols</a>.
-                    </p>
-                  </form>
-                </motion.div>
-              ) : (
-                <motion.div 
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  className="glass-panel"
-                  style={{ padding: '6rem 4rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 'var(--shadow-premium)' }}
-                >
-                    <div style={{ color: '#10b981', marginBottom: '2.5rem' }}>
-                        <CheckCircle2 size={80} strokeWidth={1} />
-                    </div>
-                    <h2 style={{ marginBottom: '1.5rem' }}>Inquiry Dispatched</h2>
-                    <p style={{ color: 'var(--muted-foreground)', fontSize: '1.125rem', lineHeight: 1.7, marginBottom: '4rem' }}>
-                        Your enterprise technical brief has been secured in our global vault. An Elite strategist will be assigned to your case shortly.
-                    </p>
-                    <div style={{ height: '1px', width: '100%', background: 'var(--border)', marginBottom: '3rem' }}></div>
-                    <button onClick={() => setIsSubmitted(false)} className="btn btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2.5rem' }}>
-                        Close Dispatch <ArrowRight size={18} />
-                    </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-          </div>
         </div>
-      </section>
+      </div>
+
+      <style jsx>{`
+        .terminal-input {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 1rem;
+            color: white;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .terminal-input:focus {
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.06);
+        }
+      `}</style>
     </div>
   );
 }
